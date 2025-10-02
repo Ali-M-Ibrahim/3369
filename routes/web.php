@@ -1,8 +1,13 @@
 <?php
 
+use App\Http\Controllers\APIController;
+use App\Http\Controllers\InvController;
+use App\Http\Controllers\SecondController;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\FirstController;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -89,3 +94,22 @@ Route::get("route-param6",function(Request  $request){
 Route::post("post-route",function(Request  $request){
    return "i am post route";
 });
+
+
+
+Route::get("route10",[FirstController::class,"index"])->name('first-route');
+Route::get("route12/{id}",[FirstController::class,"details"]);
+
+Route::get("route11",'App\Http\Controllers\FirstController@index');
+Route::get("route13",[
+    'uses'=>'App\Http\Controllers\FirstController@index'
+]);
+
+Route::resource('second',SecondController::class);
+//->only(['index','create']);
+//->except(['index']);
+
+Route::apiResource('test',APIController::class);
+
+
+Route::get('invoke',InvController::class);
