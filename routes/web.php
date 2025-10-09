@@ -8,6 +8,8 @@ use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FirstController;
 
+use App\Http\Controllers\DataController;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -113,3 +115,6 @@ Route::apiResource('test',APIController::class);
 
 
 Route::get('invoke',InvController::class);
+
+
+Route::get('data',[DataController::class,'index']);
