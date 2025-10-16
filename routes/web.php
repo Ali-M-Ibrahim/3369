@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FirstController;
 
 use App\Http\Controllers\DataController;
+use App\Http\Controllers\CustomerController;
 
 
 Route::get('/', function () {
@@ -118,3 +119,48 @@ Route::get('invoke',InvController::class);
 
 
 Route::get('data',[DataController::class,'index']);
+
+Route::get("create1",[CustomerController::class,'create1']);
+Route::get("create2",[CustomerController::class,'create2']);
+Route::post("create3",[CustomerController::class,'create3']);
+Route::post("create4",[CustomerController::class,'create4']);
+
+Route::get("update1",[CustomerController::class,'update1']);
+Route::get("update2",[CustomerController::class,'update2']);
+Route::put("update3/{id}",[CustomerController::class,'update3']);
+Route::get("update4",[CustomerController::class,'update4']);
+Route::get("delete1/{id}",[CustomerController::class,'delete1']);
+Route::get("delete2",[CustomerController::class,'delete2']);
+
+
+Route::get("getAll",[CustomerController::class,'getAll']);
+Route::get("getCustomerById/{id}",[CustomerController::class,'getCustomerById']);
+Route::get("getCustomerHavingBalance0",[CustomerController::class,'getCustomerHavingBalance0']);
+Route::get("getCustomerHavingBalanceget0",[CustomerController::class,'getCustomerHavingBalanceget0']);
+
+Route::get("getCustomers",[CustomerController::class,'getCustomers']);
+
+Route::get("getCustomerHavingBalance/{b}",[CustomerController::class,'getCustomerHavingBalance']);
+
+Route::get("getBaabda",[CustomerController::class,'getBaabda']);
+Route::get("getFnames",[CustomerController::class,'getFnames']);
+Route::get("getBaabdaOrBalance",[CustomerController::class,'getBaabdaOrBalance']);
+Route::get("getLike",[CustomerController::class,'getLike']);
+
+
+Route::get("first2rows",[CustomerController::class,'first2rows']);
+Route::get("customerIn",[CustomerController::class,'customerIn']);
+Route::get("customerBetween",[CustomerController::class,'customerBetween']);
+
+Route::get("findCustomerOrFail/{id}",[CustomerController::class,'findCustomerOrFail']);
+
+Route::get("ordering",[CustomerController::class,'ordering']);
+Route::get("stats",[CustomerController::class,'stats']);
+Route::get("join",[CustomerController::class,'join']);
+
+
+
+
+
+
+
