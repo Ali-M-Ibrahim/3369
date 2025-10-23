@@ -23,4 +23,8 @@ class Customer extends Model
                                         'service_id'
         );
     }
+
+    public function getNetBalance(){
+        return $this->balance * 1000 -100;
+    }
 }

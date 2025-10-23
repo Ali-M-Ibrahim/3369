@@ -10,6 +10,8 @@ use App\Http\Controllers\FirstController;
 
 use App\Http\Controllers\DataController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\WebsiteController;
+use App\Http\Controllers\CustomerResource;
 
 
 Route::get('/', function () {
@@ -161,6 +163,37 @@ Route::get("join",[CustomerController::class,'join']);
 
 
 
+Route::get('page1',[WebsiteController::class,'index']);
+Route::get('page2',[WebsiteController::class,'index2']);
+
+
+Route::get('list-customers',[WebsiteController::class,'list'])
+->name('list-customers');
+Route::get('view-customer/{id}',[WebsiteController::class,'viewCustomer']);
+Route::get('view-customer2/{id}',[WebsiteController::class,'viewCustomer2']);
+Route::get('view-only-customer/{id}',[WebsiteController::class,'viewCustomer3'])
+    ->name('single-customer');
+
+
+Route::get('add-customer',[WebsiteController::class,'addCustomer'])
+->name('add-customer');
+Route::post('post-customer',[WebsiteController::class,'postCustomer'])
+    ->name('post-customer');
+
+Route::get('delete-customer/{id}',[WebsiteController::class,'deleteCustomer'])
+    ->name('delete-customer');
+
+Route::delete('delete-customer2/{id}',[WebsiteController::class,'deleteCustomer'])
+    ->name('delete-customer2');
+
+
+Route::get('edit-customer/{id}',[WebsiteController::class,'editCustomer'])
+    ->name('edit-customer');
+
+
+Route::put('update-customer/{id}',[WebsiteController::class,'updateCustomer'])
+    ->name('update-customer');
 
 
 
+Route::resource('customer',CustomerResource::class);

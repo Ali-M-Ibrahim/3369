@@ -2,16 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Customer;
 use Illuminate\Http\Request;
 
-class SecondController extends Controller
+class CustomerResource extends Controller
 {
     /**
      * Display a listing of the customer.
      */
     public function index()
     {
-       return "i am second index fucntion";
+        $mylist = Customer::all();
+        return view('customer.list',compact('mylist'));
     }
 
     /**
@@ -19,7 +21,7 @@ class SecondController extends Controller
      */
     public function create()
     {
-        return "i am second create fucntion";
+        return view('customer.add');
     }
 
     /**
@@ -27,7 +29,8 @@ class SecondController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $c2 = Customer::create($request->all());
+        return redirect()->route('customer.index');
     }
 
     /**
@@ -43,7 +46,8 @@ class SecondController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $obj  = Customer::findOrFail($id);
+        return view('customer.edit',compact('obj'));
     }
 
     /**
@@ -51,7 +55,11 @@ class SecondController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $obj  = Customer::findOrFail($id);
+        $obj->fill($request->all());
+        $obj->save();
+        return redirect()->route('customer.index');
+
     }
 
     /**
@@ -59,6 +67,8 @@ class SecondController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $obj  = Customer::findOrFail($id);
+        $obj->delete();
+        return redirect()->route('customer.index');
     }
 }

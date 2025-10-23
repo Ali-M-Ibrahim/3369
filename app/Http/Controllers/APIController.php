@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 class APIController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display a listing of the customer.
      */
     public function index()
     {
@@ -15,7 +15,7 @@ class APIController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created customer in storage.
      */
     public function store(Request $request)
     {
@@ -23,7 +23,7 @@ class APIController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Display the specified customer.
      */
     public function show(string $id)
     {
@@ -31,7 +31,7 @@ class APIController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the specified customer in storage.
      */
     public function update(Request $request, string $id)
     {
@@ -39,7 +39,7 @@ class APIController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified customer from storage.
      */
     public function destroy(string $id)
     {
