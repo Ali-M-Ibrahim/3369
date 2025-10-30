@@ -29,6 +29,16 @@ class CustomerResource extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+                'first_name'=>'required|max:12|min:6|unique:customers',
+                'last_name'=>'required',
+                 'balance'=>'required|numeric',
+                 'address'=>'required',
+//            'password'=>'required|same:c_password',
+                'password'=>'required|confirmed'
+        ],[
+            'required'=>"The :attribute  is required by peter"
+        ]);
         $c2 = Customer::create($request->all());
         return redirect()->route('customer.index');
     }

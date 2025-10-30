@@ -13,6 +13,7 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\WebsiteController;
 use App\Http\Controllers\CustomerResource;
 
+use App\Http\Controllers\UploadController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -197,3 +198,10 @@ Route::put('update-customer/{id}',[WebsiteController::class,'updateCustomer'])
 
 
 Route::resource('customer',CustomerResource::class);
+
+Route::get('upload-image',[UploadController::class,'index']);
+Route::post('upload-file',[UploadController::class,'method1'])->name('method1');
+
+Route::get('list-image',[UploadController::class,'list']);
+Route::post('upload-file2',[UploadController::class,'method2'])->name('method2');
+Route::post('upload-file3',[UploadController::class,'method3'])->name('method3');
