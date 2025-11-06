@@ -1,8 +1,10 @@
 <?php
 
 use App\Http\Controllers\APIController;
+use App\Http\Controllers\DIController;
 use App\Http\Controllers\InvController;
 use App\Http\Controllers\SecondController;
+use App\Http\Controllers\TemplateController;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Route;
@@ -14,6 +16,8 @@ use App\Http\Controllers\WebsiteController;
 use App\Http\Controllers\CustomerResource;
 
 use App\Http\Controllers\UploadController;
+use App\Http\Controllers\PagesController;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -205,3 +209,16 @@ Route::post('upload-file',[UploadController::class,'method1'])->name('method1');
 Route::get('list-image',[UploadController::class,'list']);
 Route::post('upload-file2',[UploadController::class,'method2'])->name('method2');
 Route::post('upload-file3',[UploadController::class,'method3'])->name('method3');
+
+
+Route::get('page-first',[PagesController::class,'index']);
+Route::get('page-second',[PagesController::class,'index2']);
+
+Route::get('template-index',[TemplateController::class,'index'])->name('home');
+Route::get('template-service',[TemplateController::class,'service'])->name('service');
+
+
+Route::get('old-di',[DIController::class,'old']);
+Route::get('method-di',[DIController::class,'methodDi']);
+Route::get('method-f3',[DIController::class,'f3']);
+Route::get('method-f4',[DIController::class,'f4']);
