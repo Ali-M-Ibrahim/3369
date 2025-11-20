@@ -17,6 +17,7 @@ class DIController extends Controller
     public function old(){
         $logs = new LoggingService();
         $logs->addLog("hello from old function");
+        return "ok";
     }
 
     public function methodDi(LoggingService $logs){

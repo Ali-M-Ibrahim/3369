@@ -201,7 +201,7 @@ Route::put('update-customer/{id}',[WebsiteController::class,'updateCustomer'])
 
 
 
-Route::resource('customer',CustomerResource::class);
+
 
 Route::get('upload-image',[UploadController::class,'index']);
 Route::post('upload-file',[UploadController::class,'method1'])->name('method1');
@@ -218,7 +218,15 @@ Route::get('template-index',[TemplateController::class,'index'])->name('home');
 Route::get('template-service',[TemplateController::class,'service'])->name('service');
 
 
-Route::get('old-di',[DIController::class,'old']);
-Route::get('method-di',[DIController::class,'methodDi']);
-Route::get('method-f3',[DIController::class,'f3']);
-Route::get('method-f4',[DIController::class,'f4']);
+
+
+
+Route::resource('customer',CustomerResource::class)->middleware('firstMiddleware');
+
+
+Route::middleware(['firstMiddleware'])->group(function () {
+    Route::get('old-di',[DIController::class,'old']);
+    Route::get('method-di',[DIController::class,'methodDi']);
+    Route::get('method-f3',[DIController::class,'f3']);
+    Route::get('method-f4',[DIController::class,'f4']);
+});
